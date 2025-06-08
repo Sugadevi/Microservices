@@ -1,0 +1,37 @@
+services:
+  accounts:
+    image: "sugadevi/accounts:s4"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - sugabank
+  loans:
+    image: "sugadevi/loans:s4"
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - sugabank
+  cards:
+    image: "sugadevi/cards:s4"
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - sugabank
+networks:
+  sugabank:
+    driver: "bridge"
